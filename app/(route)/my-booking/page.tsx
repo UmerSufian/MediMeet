@@ -18,7 +18,7 @@ function MyBooking() {
 
     useEffect(() => {
         user && getUserBookingList();
-    }, [user])
+    }, [user, getUserBookingList]) // Include getUserBookingList in the dependency array
 
     const filterUserBooking = (type:any) => {
         const result = bookingList.filter(item =>

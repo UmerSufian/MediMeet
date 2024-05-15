@@ -1,4 +1,4 @@
-// "use client"
+"use cleint"
 import React, { useEffect, useState } from "react";
 import {
   Dialog,
@@ -13,13 +13,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar"
 import { CalendarDays, Clock } from "lucide-react";
-import { time } from "console";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import { toast } from "sonner";
 
+interface Doctor {
+  id: string; // Assuming the 'id' property is of type string
+  // Add other properties of the 'doctor' object here
+}
 
-function BookAppointment({doctor}) {
+function BookAppointment({ doctor }: { doctor: Doctor }) { // Define the type of the 'doctor' prop
     const [date, setDate]=useState(new Date());
     const [timeSlot,setTimeSlot]=useState();
     const [selectedTimeSlot,setSelectedTimeSlot]=useState();
