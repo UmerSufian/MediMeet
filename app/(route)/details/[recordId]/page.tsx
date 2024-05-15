@@ -3,9 +3,31 @@ import GlobalApi from '@/app/_utils/GlobalApi'
 import React, { useEffect, useState } from 'react'
 import DoctorDetail from '../_components/DoctorDetail';
 
+interface Doctor {
+  id: string;
+  attributes: {
+    Name: string;
+    Year_of_Experience: number;
+    Address: string;
+    categories: {
+      data: {
+        attributes: {
+          Name: string;
+        };
+      }[];
+    };
+    About: {
+      children: {
+        text: string;
+      }[];
+    }[];
+    // Add other properties as needed
+  };
+}
+
 function Details({ params }:any) {
 
-  const [doctor, setDoctor] = useState([]);
+  const [doctor, setDoctor] = useState<Doctor | null>(null); 
 
   useEffect(() => {
     const getDoctorById = async () => {
