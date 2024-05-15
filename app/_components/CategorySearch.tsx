@@ -35,7 +35,7 @@ function CategorySearch() {
             {/* Display List of category */}
             <div className='grid grid-cols-3 mt-5 md:grid-cols-4 lg:grid-col-6'>
             {categoryList.length>0?categoryList.map((item,index)=>index<6&&(
-                <Link href={'/search/'+item.attributes.Name} key={index} className='flex flex-col text-center items-center p-5 bg-blue-50 m-2 rounded-lg gap-2 hover:scale-110 transition-all ease-in-out cursor-pointer'>
+                <Link href={'/search/'+item.attributes.Name} key={item.id} className='flex flex-col text-center items-center p-5 bg-blue-50 m-2 rounded-lg gap-2 hover:scale-110 transition-all ease-in-out cursor-pointer'>
                     <Image src={item.attributes?.Icon?.data.attributes?.url}
                     alt='icon' width={40} height={40}/>
                     <label className='text-blue-600 text-sm'>{item?.attributes?.Name}</label>
@@ -43,7 +43,7 @@ function CategorySearch() {
             ))
         :
         [1,2,3,4,5,6].map((item,index)=>(
-            <div className=' bg-slate-200 m-2 w-[130px] h-[120px] animate-pulse rounded-lg'>
+            <div className=' bg-slate-200 m-2 w-[130px] h-[120px] animate-pulse rounded-lg' key={index}>
 
             </div>
         ))

@@ -22,7 +22,7 @@ function CategoryList() {
     useEffect(() => {
         getCategoryList();
         console.log(category);
-    }, []);
+    }, [category]); // Include category in the dependency array
 
     const getCategoryList = () => {
         GlobalApi.getCategory().then(resp => {

@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button'
 import { LoginLink, LogoutLink, useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
-import path from 'path'
 import React, { useEffect } from 'react'
 import {
     Popover,
@@ -36,7 +35,7 @@ function Header() {
 
     useEffect(()=>{
         console.log(user);
-    },[])
+    },[user]); // Include user in the dependency array
 
   return (
     <div className='flex items-center justify-between p-4 shadow-sm'>
@@ -44,13 +43,13 @@ function Header() {
         <Image src='/logo2.png' alt='logo' width={180} height={80}/>
         <ul className='md:flex gap-8 hidden'>
             {Menu.map((item,index)=>(
-                <Link href={item.path}>
-                <li className='hover:text-primary cursor-pointer hover:scale-105 transition-all ease-in-out'>{item.name}</li>
+                <Link href={item.path} key={item.id}> {/* Added key prop here */}
+                    <li className='hover:text-primary cursor-pointer hover:scale-105 transition-all ease-in-out'>{item.name}</li>
                 </Link>
             ))}
         </ul>
         </div>
-        {user?
+        {user ?
         <Popover>
             <PopoverTrigger>
                 <Image src={user?.picture} alt='profile-image' width={50} height={50} className='rounded-full'/>

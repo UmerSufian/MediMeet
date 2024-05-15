@@ -7,16 +7,16 @@ const Search = ({ params }: any) => {
   const [doctorList, setDoctorList] = useState([]);
   const formattedCname = decodeURIComponent(params.cname.replace(/\+/g, " ")).replace(/[%\d]/g, "");
 
-
-  useEffect(() => {
-    getDoctors();
-  }, []);
-
   const getDoctors = () => {
-    GlobalApi.getDoctorByCategory(params.cname).then((res) => {
+    GlobalApi.getDoctorByCategory(params.cname).then((res:any) => {
       setDoctorList(res.data.data);
     });
   };
+
+  useEffect(() => {
+    getDoctors();
+  }, [getDoctors]); // Include getDoctors in the dependency array
+
   return (
     <div className="mt-5">
       <DoctorList heading={formattedCname} doctorList={doctorList} />
@@ -24,4 +24,4 @@ const Search = ({ params }: any) => {
   );
 };
 
-export default Search
+export default Search;

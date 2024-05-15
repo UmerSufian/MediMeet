@@ -61,7 +61,7 @@ function BookAppointment({doctor}) {
             }
         }
 
-        GlobalApi.BookAppointment(data).then(resp=>{
+        GlobalApi.bookAppointment(data).then(resp=>{
             console.log(resp);
             if(resp){
                 GlobalApi.sendEmail(data).then(resp=>{

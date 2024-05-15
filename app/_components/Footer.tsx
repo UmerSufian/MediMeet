@@ -8,7 +8,7 @@ function Footer() {
     <Image src='/logo2.png' alt='logo' width={200} height={100}/>
 
     <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-    "Stay connected with us for the latest updates and health tips. Your wellness is our priority."
+    Stay connected with us for the latest updates and health tips. Your wellness is our priority.
     </p>
 
     <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
