@@ -1,15 +1,13 @@
+"use client"
 import GlobalApi from '@/app/_utils/GlobalApi';
 import React, { useEffect, useState } from 'react'
 import {
     Command,
-    CommandDialog,
     CommandEmpty,
     CommandGroup,
     CommandInput,
     CommandItem,
     CommandList,
-    CommandSeparator,
-    CommandShortcut,
 } from "@/components/ui/command"
 import Link from 'next/link';
 import Image from 'next/image';
