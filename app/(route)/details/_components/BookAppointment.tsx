@@ -27,9 +27,9 @@ interface TimeSlot {
 }
 
 function BookAppointment({ doctor }: { doctor: Doctor }) {
-    const [date, setDate]=useState(new Date());
-    const [timeSlot, setTimeSlot]=useState<TimeSlot[]>([]); // Specify the type of timeSlot
-    const [selectedTimeSlot, setSelectedTimeSlot]=useState<string>();
+    const [date, setDate] = useState<Date>(new Date());
+    const [timeSlot, setTimeSlot] = useState<TimeSlot[]>([]);
+    const [selectedTimeSlot, setSelectedTimeSlot] = useState<string>();
     const { user } = useKindeBrowserClient();
 
     useEffect(() => {
@@ -83,6 +83,13 @@ function BookAppointment({ doctor }: { doctor: Doctor }) {
         return day < new Date();
     }
 
+    // Define the event handler for date selection
+    const handleDateSelect = (day: Date | undefined) => {
+        if (day) {
+            setDate(day); // Update the date state with the selected day
+        }
+    };
+
     return (
         <Dialog>
             <DialogTrigger>
@@ -103,7 +110,7 @@ function BookAppointment({ doctor }: { doctor: Doctor }) {
                                     <Calendar
                                         mode="single"
                                         selected={date}
-                                        onSelect={setDate}
+                                        onSelect={handleDateSelect} // Use the corrected event handler here
                                         disabled={isPastDay}
                                         className="rounded-md border"
                                     />
