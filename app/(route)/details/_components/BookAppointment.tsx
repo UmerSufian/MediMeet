@@ -68,10 +68,10 @@ function BookAppointment({ doctor }: { doctor: Doctor }) {
             }
         }
 
-        GlobalApi.bookAppointment(data).then(resp => {
+        GlobalApi.bookAppointment(data).then((resp: any) => {
             console.log(resp);
             if (resp) {
-                GlobalApi.sendEmail(data).then(resp => {
+                GlobalApi.sendEmail(data).then((resp: any) => {
                     console.log(resp);
                 })
                 toast("Booking Confirmation sent on Email");
