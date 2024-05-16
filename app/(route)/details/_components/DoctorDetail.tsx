@@ -56,12 +56,15 @@ function DoctorDetail({ doctor }: { doctor: Doctor }) {
     }
   ];
 
+  const imageUrl = doctor.attributes && doctor.attributes.image && doctor.attributes.image.data && doctor.attributes.image.data[0] && doctor.attributes.image.data[0].attributes && doctor.attributes.image.data[0].attributes.url;
+
   return (
     <>
       <div className='grid grid-cols-1 md:grid-cols-3 border-[1px] p-5 mt-5 rounded-lg'>
         {/* Doctor Image */}
         <div>
-          <Image src={doctor.attributes?.image?.data?.[0]?.attributes?.url} alt='doctor-image' width={200} height={200} className='rounded-lg w-full h-[270px] object-cover' />
+          {/* Use the imageUrl variable to avoid potential type errors */}
+          <Image src={imageUrl} alt='doctor-image' width={200} height={200} className='rounded-lg w-full h-[270px] object-cover' />
         </div>
         {/* Doctor Info */}
         <div className='col-span-2 mt-5 flex md:px-10 flex-col gap-3 items-baseline'>
